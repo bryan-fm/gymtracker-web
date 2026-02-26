@@ -1,0 +1,274 @@
+📘 GymTracker Web — Setup Inicial
+
+Repositório: gymtracker-web
+Stack: React + TypeScript + Vite
+
+1️⃣ Inicialização do Projeto
+
+O projeto foi inicializado dentro da pasta raiz utilizando o Vite:
+
+npm create vite@latest . -- --template react
+
+Após a criação, foram instaladas as dependências:
+
+npm install
+2️⃣ Criação do Repositório
+
+Foi criado o repositório:
+
+gymtracker-web
+
+Objetivo: aplicação frontend para o app de controle de treinos (GymTracker).
+
+3️⃣ Stack escolhida
+
+React
+
+TypeScript
+
+Vite
+
+🎯 Por que Vite?
+
+Build extremamente rápido
+
+Dev server instantâneo
+
+Configuração simples
+
+Melhor DX comparado ao Create React App
+
+4️⃣ Estrutura Inicial do Projeto
+
+Foi definida uma estrutura orientada a escalabilidade e organização por responsabilidade:
+
+src/
+  features/
+  services/
+  hooks/
+  context/
+  components/
+  types/
+📂 Explicação das pastas
+features/
+
+Organização por domínio da aplicação.
+
+Exemplo futuro:
+
+features/
+  workouts/
+  auth/
+  profile/
+
+Cada feature pode conter:
+
+componentes específicos
+
+hooks
+
+services locais
+
+tipos
+
+👉 Essa abordagem escala melhor que organizar apenas por “components”.
+
+services/
+
+Responsável por comunicação com API externa.
+
+Exemplo:
+
+services/
+  api.ts
+  graphqlClient.ts
+
+Separar essa camada facilita:
+
+troca de client HTTP
+
+testes
+
+manutenção futura
+
+hooks/
+
+Custom hooks globais reutilizáveis.
+
+Exemplo:
+
+hooks/
+  useAuth.ts
+  useDebounce.ts
+context/
+
+Contexts globais da aplicação.
+
+Exemplo:
+
+context/
+  AuthContext.tsx
+  ThemeContext.tsx
+components/
+
+Componentes reutilizáveis e de UI compartilhada.
+
+Exemplo:
+
+components/
+  Button/
+  Input/
+  Navbar/
+types/
+
+Tipos globais compartilhados.
+
+Exemplo:
+
+types/
+  user.ts
+  workout.ts
+5️⃣ Decisão Arquitetural: Consumo da API GraphQL
+
+Foi analisado o uso de:
+
+Axios
+
+Apollo Client
+
+TanStack Query
+
+📌 Axios
+
+Biblioteca HTTP genérica.
+
+❌ Não possui:
+
+cache automático
+
+gerenciamento de estado assíncrono
+
+controle inteligente de refetch
+
+Conclusão:
+Não é ideal para GraphQL moderno.
+
+📌 Apollo Client
+
+Apollo GraphQL
+Apollo Client
+
+Prós:
+
+Cache normalizado poderoso
+
+Suporte nativo a GraphQL
+
+DevTools
+
+Contras:
+
+Bundle maior
+
+Complexidade elevada
+
+Pode gerar sobrecarga desnecessária em projetos médios
+
+📌 TanStack Query
+
+TanStack
+TanStack Query
+
+Não é um client GraphQL, mas um gerenciador de estado assíncrono.
+
+Pode ser combinado com:
+
+fetch
+
+graphql-request
+
+Prós:
+
+Cache previsível
+
+Controle explícito de invalidação
+
+Menor complexidade
+
+Melhor escalabilidade arquitetural
+
+🎯 Decisão
+
+Para o GymTracker Web, a escolha ideal é:
+
+TanStack Query + graphql-request
+
+Motivos:
+
+Arquitetura mais limpa
+
+Maior controle
+
+Menor acoplamento
+
+Melhor aprendizado de gerenciamento de cache
+
+6️⃣ Criação do Componente de Layout (Navbar)
+
+Foi criado um componente simples de layout: Navbar.
+
+📌 Padrão de organização adotado
+
+Boa prática arquitetural definida:
+
+✅ Pasta com nome do componente
+✅ Arquivo com o mesmo nome do componente
+❌ Evitar index.tsx como componente principal
+
+Estrutura:
+
+components/
+  Navbar/
+    Navbar.tsx
+    index.ts
+
+index.ts serve apenas como barrel export:
+
+export * from './Navbar'
+🎯 Motivo da decisão
+
+Usar Navbar.tsx em vez de index.tsx melhora:
+
+Stack trace (mostra o nome real do arquivo)
+
+Navegação na IDE
+
+Legibilidade em projetos grandes
+
+Organização quando o componente cresce
+
+7️⃣ Troca de JSX para TSX
+
+O projeto foi convertido para TypeScript.
+
+Arquivos .jsx foram alterados para .tsx.
+
+📌 Por que usar TSX?
+
+Tipagem estática
+
+Melhor autocomplete
+
+Maior segurança em refactors
+
+Menos bugs em produção
+
+Melhor padronização para projeto escalável
+
+Em aplicações que crescem e possuem múltiplos domínios (como um app de controle de treinos), TypeScript ajuda a:
+
+Definir contratos claros
+
+Garantir consistência entre frontend e backend GraphQL
+
+Facilitar manutenção futura
