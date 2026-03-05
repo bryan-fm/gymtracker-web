@@ -12,24 +12,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Setup Node
+      # 1️⃣ Instala pnpm primeiro
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      # 2️⃣ Depois configura Node + cache pnpm
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
 
-      # Install pnpm
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
-      # Install dependencies
+      # 3️⃣ Instala dependências
       - run: pnpm install --frozen-lockfile
 
-      # Build
+      # 4️⃣ Build
       - run: pnpm build
 
-      # Deploy to Firebase
+      # 5️⃣ Deploy
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
