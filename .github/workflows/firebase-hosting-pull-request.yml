@@ -19,7 +19,7 @@ jobs:
       # Instala pnpm
       - uses: pnpm/action-setup@v2
         with:
-          version: 8
+          version: 10
 
       # Setup Node
       - uses: actions/setup-node@v4
