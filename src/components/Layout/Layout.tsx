@@ -1,21 +1,17 @@
-import React, { FC } from "react";
-import Navbar from "../Navbar/Navbar";
+import React, { FC } from 'react'
+import { HeaderMegaMenu } from '../Header/Header'
+import { AppShell, Group } from '@mantine/core'
 
+const Layout: FC = ({ children }: any) => {
+  return (
+    <AppShell header={{ height: 60 }}>
+      <AppShell.Header>
+        <HeaderMegaMenu />
+      </AppShell.Header>
 
-const Layout: FC = () => {
+      <AppShell.Main>{children}</AppShell.Main>
+    </AppShell>
+  )
+}
 
-    return (
-        //there is still a space between the top of the page and the navbar
-        <div style={{
-            display: "flex",
-            flexDirection: "column",
-            margin: 0,
-            padding: 0,
-            boxSizing: "border-box",
-        }}>
-            <Navbar title="GymTracker" />
-        </div>
-    )
-};
-
-export default Layout;
+export default Layout
