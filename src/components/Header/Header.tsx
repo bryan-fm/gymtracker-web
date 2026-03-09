@@ -25,7 +25,7 @@ export function Header() {
                 style={{ flexDirection: 'row' }}
               >
                 <Group>
-                  <NavLink label="Home" />
+                  <NavLink label="Home" onClick={() => navigate('/')} />
                   <NavLink label="Treino" onClick={() => navigate('/workouts')} />
                   <NavLink label="Dietas" />
                   <NavLink label="Entrar" />
