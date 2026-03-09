@@ -1,31 +1,18 @@
 import { IconBarbell } from '@tabler/icons-react'
-import {
-  Anchor,
-  Box,
-  Burger,
-  Button,
-  Drawer,
-  Group,
-  NavLink,
-  Text,
-  useMantineTheme,
-} from '@mantine/core'
+import { Box, Burger, Button, Drawer, Group, NavLink, Text, useMantineTheme } from '@mantine/core'
 import './header.css'
-import { useMedia } from 'use-media'
 import { useState } from 'react'
 import { useMediaQuery } from '@mantine/hooks'
 
-export function HeaderMegaMenu() {
+export function Header() {
   const [drawerOpened, setDrawerOpened] = useState(false)
-  const theme = useMantineTheme()
 
   const isMobile = useMediaQuery('(max-width: 768px)')
 
   return (
-    <Box pos="relative">
+    <Box pos="relative" style={{ fontFamily: 'Inter, sans-serif' }}>
       <header className="header">
         <Group justify="space-between" h="100%">
-          <IconBarbell size={30} />
           {isMobile ? (
             <Burger opened={drawerOpened} onClick={() => setDrawerOpened(!drawerOpened)} size="sm">
               <Drawer
@@ -39,8 +26,8 @@ export function HeaderMegaMenu() {
                   <NavLink label="Home" />
                   <NavLink label="Treino" />
                   <NavLink label="Dietas" />
-                  <NavLink label="Login" />
-                  <NavLink label="Sign Up" />
+                  <NavLink label="Entrar" />
+                  <NavLink label="Cadastrar" />
                 </Group>
               </Drawer>
             </Burger>
@@ -67,11 +54,12 @@ export function HeaderMegaMenu() {
                 </a>
               </Group>
               <Group visibleFrom="sm">
-                <Button variant="default">Log in</Button>
-                <Button>Sign up</Button>
+                <Button variant="default">Entrar</Button>
+                <Button>Cadastrar</Button>
               </Group>
             </>
           )}
+          <IconBarbell size={30} />
         </Group>
       </header>
     </Box>

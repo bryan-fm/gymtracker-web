@@ -1,12 +1,12 @@
 import React, { FC } from 'react'
-import { HeaderMegaMenu } from '../Header/Header'
+import { Header } from '../Header/Header'
 import { AppShell, Group } from '@mantine/core'
 
 const Layout: FC = ({ children }: any) => {
   return (
     <AppShell header={{ height: 60 }}>
       <AppShell.Header>
-        <HeaderMegaMenu />
+        <Header />
       </AppShell.Header>
 
       <AppShell.Main>{children}</AppShell.Main>
