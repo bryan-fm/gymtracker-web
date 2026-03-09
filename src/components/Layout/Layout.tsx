@@ -8,7 +8,6 @@ const Layout: FC = ({ children }: any) => {
       <AppShell.Header>
         <Header />
       </AppShell.Header>
-
       <AppShell.Main>{children}</AppShell.Main>
     </AppShell>
   )

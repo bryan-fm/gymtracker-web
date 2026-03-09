@@ -1,0 +1,12 @@
+.main-title {
+  color: white;
+  font-size: 5rem;
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.highlight {
+  color: #ec6811; /* Verde limão da imagem */
+}

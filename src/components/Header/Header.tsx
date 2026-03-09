@@ -3,9 +3,11 @@ import { Box, Burger, Button, Drawer, Group, NavLink, Text, useMantineTheme } fr
 import './header.css'
 import { useState } from 'react'
 import { useMediaQuery } from '@mantine/hooks'
+import { useNavigate } from 'react-router-dom'
 
 export function Header() {
   const [drawerOpened, setDrawerOpened] = useState(false)
+  const navigate = useNavigate()
 
   const isMobile = useMediaQuery('(max-width: 768px)')
 
@@ -24,7 +26,7 @@ export function Header() {
               >
                 <Group>
                   <NavLink label="Home" />
-                  <NavLink label="Treino" />
+                  <NavLink label="Treino" onClick={() => navigate('/workouts')} />
                   <NavLink label="Dietas" />
                   <NavLink label="Entrar" />
                   <NavLink label="Cadastrar" />
@@ -43,10 +45,10 @@ export function Header() {
                   transform: 'translateX(-50%)',
                 }}
               >
-                <a href="#" className="link">
+                <a href="/" className="link">
                   <Text c="gray">HOME</Text>
                 </a>
-                <a href="#" className="link">
+                <a href="/workouts" className="link">
                   <Text c="gray">TREINO</Text>
                 </a>
                 <a href="#" className="link">

@@ -1,18 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Layout from './components/Layout/Layout'
-import LandingPage from './pages/LadingPage'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import LandingPage from './pages/LandingPage/LadingPage'
+import WorkoutsPage from './pages/Workouts/WorkoutsPage'
+import ExercisesPage from './pages/Exercises/ExercisesPage'
 
 function App() {
-  const [count, setCount] = useState<number>(0)
-
   return (
     <>
-      <Layout>
-        <LandingPage />
-      </Layout>
+      <BrowserRouter>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/workouts" element={<WorkoutsPage />} />
+            <Route path="/workouts/exercises" element={<ExercisesPage />} />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
     </>
   )
 }
