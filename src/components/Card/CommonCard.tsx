@@ -1,4 +1,5 @@
-import { Card, Image, Text, Badge, Button, Group } from '@mantine/core'
+import { Card, Image, Text, Button, Group } from '@mantine/core'
+import styles from './card.module.css'
 
 export interface CommonCardInterface {
   text: string
@@ -28,15 +29,15 @@ function CommonCard(props: CommonCardInterface) {
       padding="lg"
       radius="md"
       withBorder
-      style={{ width: props?.cardWidth || '40%' }}
+      className={styles.card}
+      style={{
+        width: cardWidth || undefined,
+        height: cardHeight || undefined,
+      }}
     >
-      {props.img != null && (
-        <Card.Section>
-          <Image src={props?.img} height={props?.cardHeight || '250'} fit="cover" />
-        </Card.Section>
-      )}
+      {props.img != null && <Image src={props?.img} fit="cover" className={styles.image} />}
 
-      <Group justify="space-between" mt="md" mb="xs">
+      <Group justify="space-between" mt="md" mb="xs" style={{ minHeight: '50px' }}>
         <Text fw={500}>{props.text}</Text>
       </Group>
 
@@ -52,6 +53,7 @@ function CommonCard(props: CommonCardInterface) {
           radius="md"
           component="a"
           href={props.link ? props.link : ''}
+          style={{ minHeight: '25px' }}
         >
           {props?.buttonText}
         </Button>

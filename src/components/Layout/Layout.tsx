@@ -4,11 +4,11 @@ import { AppShell, Group } from '@mantine/core'
 
 const Layout: FC = ({ children }: any) => {
   return (
-    <AppShell header={{ height: 60 }}>
+    <AppShell header={{ height: '60px' }}>
       <AppShell.Header>
         <Header />
       </AppShell.Header>
-      <AppShell.Main>{children}</AppShell.Main>
+      <AppShell.Main style={{ display: 'flex', flexDirection: 'column' }}>{children}</AppShell.Main>
     </AppShell>
   )
 }

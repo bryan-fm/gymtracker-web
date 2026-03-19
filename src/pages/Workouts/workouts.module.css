@@ -1,50 +1,48 @@
+.main {
+  justify-content: center; /* pode manter */
+  width: '100%';
+  flex: 1;
+  background-color: #0a0a0a;
+  padding: 24px 16px;
+  gap: 32px;
+}
+/* Container dos cards */
 .container {
   display: flex;
-  justify-content: center; /* Centers the group of items on the main axis */
+  justify-content: center;
   align-items: center;
-  flex-direction: row;
+  align-self: center;
   flex: 1;
-  flex-wrap: wrap;
-  gap: 180px;
-  font-family: 'Inter', sans-serif;
+  gap: 40px;
 }
 
-.main {
-  display: flex;
-  justify-content: center; /* Centers the group of items on the main axis */
-  align-items: center;
-  flex: 1;
-  flex-wrap: wrap;
-  width: 100%;
-  height: 93.7vh;
-  background-color: #0a0a0a;
-  flex-direction: column;
-  font-size: '10px';
-  overflow-y: auto;
+.logo {
+  align-self: center;
 }
 
-@media screen and (max-width: 768px) {
-  .container {
-    display: flex;
-    justify-content: center; /* Centers the group of items on the main axis */
-    align-items: center;
-    flex-direction: row;
-    flex: 1;
-    flex-wrap: wrap;
-    gap: 80px;
-    font-family: 'Inter', sans-serif;
+/* Cards ocupando espaço inteligente */
+.container > * {
+  flex: 1 1 500px; /* cresce, encolhe, base */
+  max-width: 500px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .main {
+    padding: 16px;
+    gap: 24px;
   }
 
-  .main {
-    display: flex;
-    justify-content: center; /* Centers the group of items on the main axis */
+  .container {
+    flex-direction: column;
+    gap: 24px;
     align-items: center;
-    flex: 1;
-    flex-wrap: wrap;
+  }
+
+  .container > * {
     width: 100%;
-    height: 93.7vh;
-    background-color: #0a0a0a;
-    flex-direction: row;
-    font-size: '10px';
+    max-width: 768px;
+    align-self: center;
+    justify-content: center;
   }
 }

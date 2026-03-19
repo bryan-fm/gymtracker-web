@@ -10,7 +10,15 @@ function CommonGrid(props: CommonGridInterface) {
   const isMobile = useMediaQuery('(max-width: 768px)')
   const { list } = props
   return (
-    <div style={{ resize: 'horizontal', overflow: 'scroll', maxWidth: '75%', maxHeight: '70vh' }}>
+    <div
+      style={{
+        resize: 'horizontal',
+        overflow: 'scroll',
+        maxWidth: '75%',
+        width: '100vw',
+        maxHeight: '70vh',
+      }}
+    >
       <SimpleGrid cols={isMobile ? 1 : 5} style={{ width: '100%' }}>
         {list.map((data) => {
           return (
@@ -20,8 +28,8 @@ function CommonGrid(props: CommonGridInterface) {
               hasButton={data.hasButton}
               buttonText={data.buttonText}
               img={data.img}
-              cardWidth="100%"
-              cardHeight="90%"
+              cardWidth={data.cardWidth || '100%'}
+              cardHeight={data.cardHeight || '90%'}
             />
           )
         })}

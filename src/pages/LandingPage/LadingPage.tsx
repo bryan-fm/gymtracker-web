@@ -10,14 +10,14 @@ export function LandingPage() {
       <div className={`${styles['bg-text']} ${styles['outline-text']}`}>WORKOUT</div>
       <div className={styles['orange-accent']}></div>
 
-      <div className={styles['content']}>
+      <div className={styles.content}>
         <LogoName />
         <p className={styles['description']}>
           Organize seus treinos, dietas e acompanhe seu progresso e evolua na academia.
         </p>
       </div>
 
-      <img src={training} className={styles['icon']} alt="Sandshrew" />
+      <img src={training} className={styles.icon} alt="Sandshrew" />
     </section>
   )
 }

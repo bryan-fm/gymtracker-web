@@ -1,0 +1,36 @@
+.main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+  background-color: #0a0a0a;
+  font-family: 'Inter', sans-serif;
+}
+
+/* largura padrão dos blocos */
+.formBlock {
+  width: 90vw;
+  margin-top: 20px;
+}
+
+/* linha dos 3 inputs */
+.row {
+  display: flex;
+  width: 90vw;
+  gap: 12px;
+  flex-direction: row; /* garante linha sempre */
+}
+
+/* inputs dentro da row */
+.inputTipo {
+  flex: 2;
+}
+
+.inputPeso {
+  flex: 1;
+}
+
+.inputReps {
+  flex: 1;
+}
