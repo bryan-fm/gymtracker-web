@@ -28,10 +28,10 @@ jobs:
 
       # 4️⃣ Build
       - run: |
-          echo "Verificando se a env existe: $VITE_APP_URL"
+          echo "Verificando se a env existe: $VITE_API_URL"
           pnpm build
         env:
-          VITE_APP_URL: ${{ secrets.VITE_APP_URL }}
+          VITE_APP_URL: ${{ secrets.VITE_API_URL }}
 
       # 5️⃣ Deploy
       - uses: FirebaseExtended/action-hosting-deploy@v0
