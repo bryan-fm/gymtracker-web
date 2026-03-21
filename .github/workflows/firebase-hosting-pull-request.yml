@@ -31,7 +31,9 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       # Build
-      - run: pnpm build
+      - run: |
+          echo "Verificando se a env existe: $VITE_APP_URL"
+          pnpm build
         env:
           VITE_APP_URL: ${{ secrets.VITE_APP_URL }}
 
