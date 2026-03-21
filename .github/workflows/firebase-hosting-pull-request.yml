@@ -35,7 +35,7 @@ jobs:
           echo "Verificando se a env existe: $VITE_API_URL"
           pnpm build
         env:
-          VITE_APP_URL: ${{ secrets.VITE_API_URL }}
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
 
       # Deploy preview
       - uses: FirebaseExtended/action-hosting-deploy@v0
