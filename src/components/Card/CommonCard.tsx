@@ -1,15 +1,18 @@
 import { Card, Image, Text, Button, Group } from '@mantine/core'
 import styles from './card.module.css'
+import React, { ReactNode } from 'react'
 
 export interface CommonCardInterface {
   text: string
   subText: string
-  buttonText: string
+  buttonText?: string
   hasButton?: boolean
   img?: string
   link?: string
   cardWidth?: string
   cardHeight?: string
+  backgroundColor?: string
+  icon?: ReactNode
 }
 
 function CommonCard(props: CommonCardInterface) {
@@ -22,6 +25,8 @@ function CommonCard(props: CommonCardInterface) {
     link = null,
     cardHeight,
     cardWidth,
+    backgroundColor,
+    icon,
   } = props
   return (
     <Card
@@ -33,9 +38,11 @@ function CommonCard(props: CommonCardInterface) {
       style={{
         width: cardWidth || undefined,
         height: cardHeight || undefined,
+        backgroundColor: backgroundColor || 'white',
       }}
     >
       {props.img != null && <Image src={props?.img} fit="cover" className={styles.image} />}
+      {props.icon != null && props.icon}
 
       <Group justify="space-between" mt="md" mb="xs" style={{ minHeight: '50px' }}>
         <Text fw={500}>{props.text}</Text>
