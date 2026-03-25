@@ -10,3 +10,9 @@
 .highlight {
   color: #ec6811; /* Verde limão da imagem */
 }
+
+@media screen and (max-width: 768px) {
+  .main-title {
+    font-size: 3.5rem;
+  }
+}

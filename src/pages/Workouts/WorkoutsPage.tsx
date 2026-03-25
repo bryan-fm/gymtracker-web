@@ -1,15 +1,20 @@
 import styles from './workouts.module.css'
 import CommonCard from '../../components/Card/CommonCard'
-import LogoName from '../../components/LogoName/LogoName'
-import { Stack } from '@mantine/core'
-
 export function WorkoutsPage() {
   return (
-    <Stack className={styles.main}>
-      <div className={styles.logo}>
-        <LogoName />
+    <section className={styles.container}>
+      <div className={styles.overlay} />
+      <div className={styles.content}>
+        <div>
+          <h2 style={{ color: 'gray' }}>Gerencie seus </h2>
+          <p className={styles.mainText}>Treinos Personalizados </p>
+          <p className={styles.description}>
+            Organize treinos, monte dietas e acompanhe sua evolução de forma simples e eficiente,
+            tudo em um só lugar, pensado para quem leva resultados a sério
+          </p>
+        </div>
       </div>
-      <div className={styles.container}>
+      <div className={styles.cardsContent}>
         <CommonCard
           text="Exercícios"
           subText="Controle seus exercícios, faça o cadastro deles para adicionar às suas fichas de treino"
@@ -17,6 +22,7 @@ export function WorkoutsPage() {
           buttonText="Cadastrar Exercícios"
           img="https://hips.hearstapps.com/hmg-prod/images/muscular-man-doing-pushup-exercise-with-dumbbell-royalty-free-image-1728661212.jpg?crop=1.00xw:1.00xh;0,0"
           link="/workouts/exercises"
+          cardWidth="400px"
         />
 
         <CommonCard
@@ -25,9 +31,10 @@ export function WorkoutsPage() {
           hasButton
           buttonText="Cadastrar Exercícios"
           img="https://boxlifemagazine.com/wp-content/uploads/2023/09/Untitled-design-2023-09-27T093955.153-1.png"
+          cardWidth="400px"
         />
       </div>
-    </Stack>
+    </section>
   )
 }
 

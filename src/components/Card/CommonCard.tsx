@@ -34,14 +34,14 @@ function CommonCard(props: CommonCardInterface) {
       padding="lg"
       radius="md"
       withBorder
-      className={styles.card}
       style={{
         width: cardWidth || undefined,
         height: cardHeight || undefined,
         backgroundColor: backgroundColor || 'white',
       }}
+      className={styles.card}
     >
-      {props.img != null && <Image src={props?.img} fit="cover" className={styles.image} />}
+      {props.img != null && <Image src={props?.img} fit="fill" className={styles.image} />}
       {props.icon != null && props.icon}
 
       <Group justify="space-between" mt="md" mb="xs" style={{ minHeight: '50px' }}>

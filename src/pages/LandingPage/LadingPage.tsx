@@ -4,7 +4,6 @@ import styles from './landing.module.css'
 import LogoName from '../../components/LogoName/LogoName'
 
 import { IconBarbell } from '@tabler/icons-react'
-import { IconWeight } from '@tabler/icons-react'
 import { IconSalad } from '@tabler/icons-react'
 import { IconTrendingUp2 } from '@tabler/icons-react'
 import { IconCalendar } from '@tabler/icons-react'
@@ -12,7 +11,6 @@ import { IconCalendar } from '@tabler/icons-react'
 import CommonCard from '../../components/Card/CommonCard'
 
 export function LandingPage() {
-  const isMobile = useMediaQuery('(max-width: 768px)')
   return (
     <section className={styles.container}>
       <div className={styles['orange-accent']}></div>

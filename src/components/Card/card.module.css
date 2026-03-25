@@ -11,12 +11,14 @@
 @media (max-width: 768px) {
   .card {
     width: 90vw;
-    min-height: 20vh;
+    min-height: 15vh;
+    max-width: 100%;
   }
 
   .image {
     min-width: 50vw;
-    height: 30vh;
+    height: 15vh;
     max-height: 30vh;
+    object-fit: fill;
   }
 }
