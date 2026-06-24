@@ -1,75 +1,91 @@
-## 🏋️ GymTracker Web
+GymTracker Web
 
-Modern frontend for the GymTracker platform built with React + TypeScript.
+Frontend da plataforma GymTracker, uma aplicação para gerenciamento de treinos e acompanhamento da evolução física dos usuários.
 
-This project focuses on:
+O projeto foi desenvolvido utilizando React e TypeScript, consumindo uma API GraphQL construída com NestJS.
 
- - Clean feature-based architecture
- - Authentication flow with JWT
- - React Query for server-state management
- - Structured API layer
- - Error & loading states handling
- - Performance optimizations
+Objetivo
 
-## 🏗 Project Structure
-    src/
-    ├── features/       # Feature-based modules
-    ├── services/       # API client & integrations
-    ├── hooks/          # Custom hooks
-    ├── context/        # Global auth state
-    ├── components/     # Shared UI components
-    ├── types/          # Type definitions
+O GymTracker surgiu como um projeto pessoal para estudo e aplicação de conceitos modernos de desenvolvimento frontend e backend, incluindo autenticação JWT, GraphQL, arquitetura em camadas, observabilidade e CI/CD.
 
-## 🚀Features
-# Authentication
- - Login
- - Token persistence
- - Route protection
- - Automatic logout
+Além da funcionalidade de gerenciamento de treinos, o projeto serve como ambiente para experimentação de boas práticas de arquitetura e engenharia de software.
 
-# Workouts
- - List workouts
- - Create workout
- - Check-in action
- - Real-time UI update after check-in
+Funcionalidades
+Autenticação
+Login de usuários
+Persistência de sessão através de JWT
+Rotas protegidas
+Controle de acesso baseado em autenticação
+Treinos
+Listagem de treinos cadastrados
+Cadastro de novos treinos
+Visualização das informações de cada treino
+Registro de check-in nos treinos
+Integração com API
+Consumo de API GraphQL
+Gerenciamento de estado remoto utilizando React Query
+Atualização automática dos dados após mutações
+Tecnologias Utilizadas
+Frontend
+React
+TypeScript
+Vite
+React Router
+TanStack Query
+Backend
+NestJS
+GraphQL
+Prisma
+PostgreSQL
+Estrutura do Projeto
+src/
+├── components/     # Componentes reutilizáveis
+├── context/        # Contextos globais
+├── features/       # Módulos da aplicação
+├── hooks/          # Hooks customizados
+├── services/       # Comunicação com API
+├── types/          # Tipagens compartilhadas
 
-# State Management
- - React Query for server state
- - Context API for auth state
+A organização segue uma abordagem baseada em funcionalidades (feature-based architecture), buscando facilitar a manutenção e evolução do sistema.
 
-# ⚡ Performance
- - Memoized components
- - Optimized re-renders
- - Lazy loading
- - Query caching & invalidation
+Executando Localmente
+Instalação
+npm install
+Ambiente de desenvolvimento
+npm run dev
 
-# 🛠 Tech Stack
- - React
- - TypeScript
- - React Query
- - TanStack Query
- - React Router
- - Vite
-
-## 🐳 Running Locally
- - npm install
- - npm run dev
-
-Default:
+Aplicação disponível em:
 
 http://localhost:5173
+Integração com Backend
 
-## 🔐 API Integration
+O frontend depende da API GymTracker:
 
-### The frontend connects to:
+Autenticação JWT
+API GraphQL
+Gerenciamento de treinos
+Check-ins de usuários
 
-GymTracker API (NestJS backend)
+Repositório do backend:
 
- - JWT-based authentication
- - Secure route guards
+https://github.com/bryan-fm/gymtracker
 
-## 📌 Design Goals
- - Clear separation of logic and UI
- - Maintainable folder structure
- - Production-ready patterns
- - Backend-aligned architecture
+Aprendizados Aplicados
+
+Durante o desenvolvimento foram explorados conceitos como:
+
+Organização modular de aplicações React
+Gerenciamento de estado remoto
+Consumo de APIs GraphQL
+Autenticação baseada em JWT
+Separação de responsabilidades
+Integração frontend/backend
+Boas práticas de tipagem com TypeScript
+
+Próximos Passos:
+Cadastro e gerenciamento de Dietas
+Histórico de evolução dos treinos
+Área administrativa
+Dashboard com métricas de progresso
+Integração com notificações
+Melhorias de observabilidade e monitoramento
