@@ -7,7 +7,7 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = () => {
   // Replace this with your actual auth logic (e.g., from a context or redux)
-  const isAuthenticated = !!localStorage.getItem('token')
+  const isAuthenticated = !!localStorage.getItem('@Auth:token')
   const location = useLocation()
 
   if (!isAuthenticated) {
