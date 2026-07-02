@@ -1,24 +1,51 @@
 import { Burger, Button, Drawer, Group, NavLink, Stack, Text } from '@mantine/core'
 import './header.css'
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext, useAuth } from '../../context/AuthContext'
 
 export function Header() {
   const [drawerOpened, setDrawerOpened] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const navigate = useNavigate()
+  const { user, signOut } = useContext(AuthContext)
+
+  useEffect(() => {
+    console.log(user)
+    if (user?.token) {
+      setIsLoggedIn(true)
+      return
+    }
+    setIsLoggedIn(false)
+  }, [user])
 
   return (
     <header className="header">
-      <Group justify="space-between" align="center" w="100%" h="100%">
-        <Group hiddenFrom="sm">
-          <Burger opened={drawerOpened} onClick={() => setDrawerOpened(!drawerOpened)} size="sm" />
-        </Group>
+      {!isLoggedIn ? (
+        <Group justify="space-between" align="center" w="100%" h="100%">
+          <Group hiddenFrom="sm">
+            <Burger
+              opened={drawerOpened}
+              onClick={() => setDrawerOpened(!drawerOpened)}
+              size="sm"
+            />
+          </Group>
 
-        <Group visibleFrom="sm">
-          <Button variant="default">Entrar</Button>
-          <Button>Cadastrar</Button>
+          <Group visibleFrom="sm">
+            <Button variant="default" onClick={() => navigate('/login')}>
+              Entrar
+            </Button>
+            <Button onClick={() => navigate('/register')}>Cadastrar</Button>
+          </Group>
         </Group>
-      </Group>
+      ) : (
+        <Group>
+          <Button variant="default" onClick={() => navigate('/profile')}>
+            {user?.name}
+          </Button>
+          <Button onClick={() => signOut()}>Sair</Button>
+        </Group>
+      )}
 
       <Group className="centerMenu" visibleFrom="sm">
         <Link to="/" className="link">
@@ -37,9 +64,7 @@ export function Header() {
           <Stack>
             <NavLink label="Home" onClick={() => navigate('/')} />
             <NavLink label="Treino" onClick={() => navigate('/workouts')} />
-            <NavLink label="Dietas" />
-            <NavLink label="Entrar" />
-            <NavLink label="Cadastrar" />
+            <NavLink label="Dietas" onClick={() => navigate('/diets')} />
           </Stack>
         </Group>
       </Drawer>

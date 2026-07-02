@@ -6,8 +6,8 @@ export interface CommonInputInterface {
   type: string
   required: boolean
   label: string
-  width?: number
   onBlur: any
+  width?: number | string
 }
 
 function CommonInput(props: CommonInputInterface) {
@@ -22,6 +22,9 @@ function CommonInput(props: CommonInputInterface) {
           required={props.required}
           style={{ width: props.width || 200 }}
           onBlur={(e) => onBlur(e)}
+          styles={{
+            input: { color: 'white', backgroundColor: '#0f172a' }, // Actual input field
+          }}
         ></Input>
       </div>
     </>

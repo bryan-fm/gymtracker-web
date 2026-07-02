@@ -29,7 +29,7 @@ export function WorkoutsPage() {
           text="Fichas"
           subText="Monte seus treinos da semana, escolha os exercícios cadastrados para montar sua ficha"
           hasButton
-          buttonText="Cadastrar Exercícios"
+          buttonText="Montar Fichas"
           img="https://boxlifemagazine.com/wp-content/uploads/2023/09/Untitled-design-2023-09-27T093955.153-1.png"
           cardWidth="400px"
         />

@@ -4,8 +4,50 @@
   flex-direction: column;
   width: 100%;
   flex: 1;
-  background-color: #0a0a0a;
+  background-color: #0b0f1a;
   font-family: 'Inter', sans-serif;
+  height: 100%;
+}
+
+.content {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  max-height: 70vh;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  margin-right: 1.5vw;
+}
+
+.form {
+  background-color: #111827;
+  border-radius: 8px;
+  align-items: center;
+  width: 50vw;
+  height: 40vh;
+  border: 1px solid #1f2937;
+}
+
+.imageForm {
+  background-color: #111827;
+  border-radius: 8px;
+  border: 1px solid #1f2937;
+  align-items: center;
+  width: 30vw;
+  max-height: 65vh;
+}
+
+.buttonDiv {
+  display: flex;
+  justify-content: flex-end;
+  width: 82vw;
+  margin: 0 auto;
+  gap: 2vw;
 }
 
 /* largura padrão dos blocos */
@@ -24,7 +66,9 @@
 
 /* inputs dentro da row */
 .inputTipo {
-  flex: 2;
+  flex: 1;
+  width: 10vw;
+  margin-top: 2vh;
 }
 
 .inputPeso {
@@ -33,4 +77,105 @@
 
 .inputReps {
   flex: 1;
+}
+
+.inputSets {
+  flex: 1;
+}
+
+.pesos {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 2vw;
+  margin-top: 2vh;
+}
+
+.saveButton {
+  color: white;
+  width: 15vw;
+}
+
+.cancelButton {
+  color: white;
+  width: 10vw;
+}
+
+.imageDialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2vh;
+}
+
+.imagePreview {
+  border: 1px dashed white;
+  border-radius: 5px;
+  padding: 1vh;
+}
+
+.image {
+  width: 27vw;
+  min-width: 27vw;
+  height: 32vh;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+    max-height: inherit;
+  }
+
+  .cards {
+    width: 90vw;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .form {
+    width: 90vw;
+    height: auto;
+  }
+
+  .formBlock {
+    width: 90vw;
+  }
+
+  .row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .inputTipo,
+  .inputPeso,
+  .inputReps,
+  .inputSets {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .buttonDiv {
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .imageForm {
+    width: 90vw;
+    max-height: 65vh;
+    height: 65vh;
+  }
+
+  .saveButton {
+    background-color: darkorange;
+    color: white;
+    width: 50vw;
+  }
+
+  .image {
+    width: 80vw;
+    min-width: 80vw;
+    height: 32vh;
+  }
 }

@@ -29,7 +29,7 @@ function CommonGrid(props: CommonGridInterface) {
               buttonText={data.buttonText}
               img={data.img}
               cardWidth={data.cardWidth || '100%'}
-              cardHeight={data.cardHeight || '90%'}
+              cardHeight={data.cardHeight || isMobile ? '40vh' : '38vh'}
             />
           )
         })}

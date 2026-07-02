@@ -8,9 +8,15 @@ import ExercisesPage from './pages/Exercises/ExercisesPage'
 import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client'
 import { ApolloProvider } from '@apollo/client/react'
 import ExercisePage from './pages/Exercise/ExercisePage'
+import { AuthProvider } from './context/AuthContext'
+import AppRoutes from './routes'
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: import.meta.env.VITE_API_URL }),
+  link: new HttpLink({
+    uri: import.meta.env.VITE_API_URL,
+    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+  }),
+
   cache: new InMemoryCache(),
 })
 
@@ -19,14 +25,11 @@ function App() {
     <>
       <BrowserRouter>
         <ApolloProvider client={client}>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/workouts" element={<WorkoutsPage />} />
-              <Route path="/workouts/exercises" element={<ExercisesPage />} />
-              <Route path="/workouts/exercises/save" element={<ExercisePage />} />
-            </Routes>
-          </Layout>
+          <AuthProvider>
+            <Layout>
+              <AppRoutes />
+            </Layout>
+          </AuthProvider>
         </ApolloProvider>
       </BrowserRouter>
     </>

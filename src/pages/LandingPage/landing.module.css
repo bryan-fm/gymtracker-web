@@ -3,15 +3,13 @@
   width: 100%;
   flex: 1;
   background-color: #0a0a0a;
-  /* display: flex; */
   align-items: center;
   padding: 0 10%;
-  overflow: hidden; /* Importante para as faixas não vazarem */
+  overflow: hidden;
   font-family: 'Inter', sans-serif;
   padding-top: 5vh;
 }
 
-/* O texto vazado no fundo */
 .bg-text {
   position: absolute;
   right: 5%;
@@ -66,7 +64,7 @@
 }
 
 .highlight {
-  color: #ec6811; /* Verde limão da imagem */
+  color: #ec6811;
 }
 
 .description {
