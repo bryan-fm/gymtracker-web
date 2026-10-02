@@ -1,6 +1,7 @@
 import { Card, Image, Text, Button, Group } from '@mantine/core'
 import styles from './card.module.css'
 import React, { ReactNode } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export interface CommonCardInterface {
   text: string
@@ -16,6 +17,7 @@ export interface CommonCardInterface {
 }
 
 function CommonCard(props: CommonCardInterface) {
+  const navigate = useNavigate()
   const {
     text,
     subText,
@@ -61,6 +63,13 @@ function CommonCard(props: CommonCardInterface) {
           component="a"
           href={props.link ? props.link : ''}
           style={{ minHeight: '25px' }}
+          onClick={(e) => {
+            if (!props.link) {
+              e.preventDefault()
+              return
+            }
+            navigate(props.link)
+          }}
         >
           {props?.buttonText}
         </Button>

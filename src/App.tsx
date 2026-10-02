@@ -14,7 +14,7 @@ import AppRoutes from './routes'
 const client = new ApolloClient({
   link: new HttpLink({
     uri: import.meta.env.VITE_API_URL,
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    headers: { Authorization: `Bearer ${localStorage.getItem('@Auth:token')}` },
   }),
 
   cache: new InMemoryCache(),

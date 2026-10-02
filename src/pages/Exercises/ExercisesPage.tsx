@@ -15,6 +15,7 @@ export function ExercisesPage() {
       ...option,
       hasButton: true,
       buttonText: 'Editar',
+      link: `/workouts/exercises/exercise/${option.id}`,
     })
   })
 
@@ -32,7 +33,7 @@ export function ExercisesPage() {
           <Button
             style={{ marginTop: '10px', backgroundColor: 'darkorange' }}
             component="a"
-            href="/workouts/exercises/save"
+            href="/workouts/exercises/exercise"
           >
             + Novo Exercício
           </Button>

@@ -2,15 +2,23 @@ import { useMediaQuery } from '@mantine/hooks'
 import styles from './exercises.module.css'
 import { Button, Dialog, Divider, Group, Image, Input, Select, Text, Textarea } from '@mantine/core'
 import CommonInput from '../../components/Input/CommonInput'
-import { useState } from 'react'
-import { useMutation } from '@apollo/client/react'
+import { useEffect, useState } from 'react'
+import { useLazyQuery, useMutation, useQuery } from '@apollo/client/react'
 import { CREATE_WORKOUT } from '../Workouts/createWorkoutMutation'
 import { notifications } from '@mantine/notifications'
 import { useNavigate } from 'react-router-dom'
 import { FileDialog } from '../../components/FileDialog/FileDialog'
+import { UPDATE_WORKOUT } from '../Workouts/updateWorkoutMutation'
+import { useParams } from 'react-router-dom'
+import { GET_WORKOUT } from '../Workouts/workoutQuery'
 
 export function ExercisePage() {
-  const [createExercise, { loading, error, data }] = useMutation(CREATE_WORKOUT)
+  const [createExercise, { loading: loadingCreate, error: errorCreate, data: dataCreate }] =
+    useMutation(CREATE_WORKOUT)
+  const [updateExercise, { loading: loadingUpdate, error: errorUpdate, data: dataUpdate }] =
+    useMutation(UPDATE_WORKOUT)
+  const [getExercise, { loading: loadingGet, error: errorGet, data: dataGet }] =
+    useLazyQuery(GET_WORKOUT)
   const [image, setImage] = useState('')
   const [name, setName] = useState('')
   const [desc, setDesc] = useState('')
@@ -19,13 +27,70 @@ export function ExercisePage() {
   const [weight, setWeight] = useState('')
   const [sets, setSets] = useState('')
   const navigate = useNavigate()
+  const { id } = useParams()
 
-  const handleCreate = async () => {
-    console.log(image, name, desc, kind, reps, weight)
+  useEffect(() => {
+    if (id && !isNaN(Number(id))) {
+      getExercise({
+        variables: {
+          input: {
+            id: Number(id),
+          },
+        },
+      }).then((res: any) => {
+        const workout = res.data.workout
+        console.log(workout)
+        setName(workout.name)
+        setDesc(workout.description || '')
+        setImage(workout.image)
+        setKind(workout.kind)
+        setReps(workout.reps.toString())
+        setWeight(workout.weight.toString())
+        setSets(workout.sets.toString())
+      })
+    }
+  }, [id])
+
+  const handleCreateorUpdate = async () => {
+    if (id && !isNaN(Number(id))) {
+      await updateExercise({
+        variables: {
+          input: {
+            id: Number(id),
+            data: {
+              name: name,
+              description: desc,
+              image: image,
+              kind: kind,
+              reps: Number(reps),
+              weight: Number(weight),
+              sets: Number(sets),
+            },
+          },
+        },
+      })
+      return
+    }
+
+    await createExercise({
+      variables: {
+        input: {
+          name: name,
+          description: desc,
+          image: image,
+          kind: kind,
+          reps: Number(reps),
+          weight: Number(weight),
+          sets: Number(sets),
+        },
+      },
+    })
+  }
+
+  const handleRequest = async () => {
     if (!image || !name || !desc || !kind || !reps || !weight) {
       const values = [image, name, desc, kind, reps, weight]
       const nullsOnly = values.filter((v) => v === null)
-      console.log(nullsOnly)
 
       notifications.show({
         color: 'red',
@@ -37,18 +102,7 @@ export function ExercisePage() {
     }
 
     try {
-      await createExercise({
-        variables: {
-          input: {
-            name: name,
-            description: desc,
-            image: image,
-            kind: kind,
-            reps: Number(reps),
-            weight: Number(weight),
-          },
-        },
-      })
+      await handleCreateorUpdate()
     } catch {
       notifications.show({
         color: 'red',
@@ -85,6 +139,7 @@ export function ExercisePage() {
               </Text>
               <div style={{ marginTop: '3vh' }}>
                 <CommonInput
+                  value={name}
                   type="text"
                   label="Nome"
                   required
@@ -97,10 +152,11 @@ export function ExercisePage() {
                 <div className={styles.inputTipo}>
                   <Text c="white">{'Grupo Muscular'}</Text>
                   <Select
+                    value={kind}
                     data={[
                       { value: 'BACK', label: 'Costas' },
                       { value: 'CHEST', label: 'Peito' },
-                      { value: 'LEG', label: 'Perna' },
+                      { value: 'LEGS', label: 'Perna' },
                       { value: 'BICEPS', label: 'Biceps' },
                       { value: 'TRICEPS', label: 'Triceps' },
                       { value: 'CARDIO', label: 'Cardio' },
@@ -118,6 +174,7 @@ export function ExercisePage() {
                 <div className={styles.pesos}>
                   <div className={styles.inputPeso}>
                     <CommonInput
+                      value={weight}
                       type="text"
                       label="Peso(KG)"
                       required
@@ -130,6 +187,7 @@ export function ExercisePage() {
 
                   <div className={styles.inputReps}>
                     <CommonInput
+                      value={reps}
                       type="text"
                       label="Repetições"
                       required
@@ -142,6 +200,7 @@ export function ExercisePage() {
 
                   <div className={styles.inputSets}>
                     <CommonInput
+                      value={sets}
                       type="text"
                       label="Séries"
                       required
@@ -166,6 +225,7 @@ export function ExercisePage() {
                 Detalhes:
               </Text>
               <Textarea
+                value={desc}
                 minRows={4}
                 maxRows={10}
                 c="white"
@@ -216,8 +276,8 @@ export function ExercisePage() {
         </Button>
         <Button
           classNames={{ root: styles.saveButton }}
-          onClick={handleCreate}
-          disabled={loading}
+          onClick={handleRequest}
+          disabled={loadingCreate || loadingUpdate || loadingGet}
           color="darkorange"
         >
           Salvar Exercício

@@ -15,7 +15,8 @@ const AppRoutes: React.FC = () => {
       <Route element={<ProtectedRoute />}>
         <Route path="/workouts" element={<WorkoutsPage />} />
         <Route path="/workouts/exercises" element={<ExercisesPage />} />
-        <Route path="/workouts/exercises/save" element={<ExercisePage />} />
+        <Route path="/workouts/exercises/exercise" element={<ExercisePage />} />
+        <Route path="/workouts/exercises/exercise/:id" element={<ExercisePage />} />
       </Route>
     </Routes>
   )

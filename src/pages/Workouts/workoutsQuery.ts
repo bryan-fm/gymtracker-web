@@ -10,6 +10,7 @@ export const GET_WORKOUTS = gql`
       reps
       weight
       image
+      sets
     }
   }
 `

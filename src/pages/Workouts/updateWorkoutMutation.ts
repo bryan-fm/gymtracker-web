@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client'
 
-export interface CreateWorkoutInput {
+export interface UpdateWorkoutInputData {
   name: string
   description: string
   image: string
@@ -10,7 +10,12 @@ export interface CreateWorkoutInput {
   sets: number
 }
 
-export interface CreateExerciseResponse {
+export interface UpdateWorkoutInput {
+  id: number
+  input: UpdateWorkoutInputData
+}
+
+export interface UpdateWorkoutResponse {
   createExercise: {
     id: string
     name: string
@@ -19,9 +24,9 @@ export interface CreateExerciseResponse {
   }
 }
 
-export const CREATE_WORKOUT = gql`
-  mutation CreateExercise($input: CreateWorkoutInput!) {
-    createWorkout(input: $input) {
+export const UPDATE_WORKOUT = gql`
+  mutation UpdateWorkout($input: UpdateWorkoutInput!) {
+    updateWorkout(input: $input) {
       id
       name
       description

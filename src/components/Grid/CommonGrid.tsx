@@ -6,6 +6,16 @@ export interface CommonGridInterface {
   list: CommonCardInterface[]
 }
 
+export interface CommonGridData {
+  text: string
+  subText?: string
+  hasButton?: boolean
+  buttonText?: string
+  img?: string
+  cardWidth?: string
+  cardHeight?: string
+}
+
 function CommonGrid(props: CommonGridInterface) {
   const isMobile = useMediaQuery('(max-width: 768px)')
   const { list } = props
@@ -30,6 +40,7 @@ function CommonGrid(props: CommonGridInterface) {
               img={data.img}
               cardWidth={data.cardWidth || '100%'}
               cardHeight={data.cardHeight || isMobile ? '40vh' : '38vh'}
+              link={data.link}
             />
           )
         })}

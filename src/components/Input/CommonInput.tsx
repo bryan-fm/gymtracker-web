@@ -8,20 +8,23 @@ export interface CommonInputInterface {
   label: string
   onBlur: any
   width?: number | string
+  value?: string
 }
 
 function CommonInput(props: CommonInputInterface) {
   const isMobile = useMediaQuery('(max-width: 768px)')
-  const { type = 'text', required, label, width, onBlur } = props
+  const { type = 'text', required, label, width, onBlur, value = '' } = props
   return (
     <>
       <div>
         <Text c="white">{props.label}</Text>
         <Input
+          value={props.value}
           type={props.type}
           required={props.required}
           style={{ width: props.width || 200 }}
           onBlur={(e) => onBlur(e)}
+          onChange={(e) => onBlur(e)}
           styles={{
             input: { color: 'white', backgroundColor: '#0f172a' }, // Actual input field
           }}
